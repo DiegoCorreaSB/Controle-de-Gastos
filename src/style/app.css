@@ -1,0 +1,160 @@
+nav {
+  width: 90px;
+  height: 100vh;
+  position: fixed;
+  /* Fixa na esquerda */
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  gap: 50px;
+  flex-direction: column;
+
+  background-color: var(--color-dashboard);
+
+  top: 0;
+  left: 0;
+}
+
+nav button {
+  border: 0;
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  background-color: #0575c5;
+}
+
+nav button:hover {
+    cursor: pointer;
+    border: #043f69 2px solid;
+}
+
+
+main {
+  margin-left: 120px;
+  padding: 30px;
+
+  gap: 30px;
+}
+
+.containers-main {
+  background-color: var(--color-dashboard);
+  padding: 30px;
+
+  border-radius: 2em;
+  box-shadow: #00000090 0px 0px 20px;
+}
+
+#dashboard {
+  width: 1586px;
+  height: 200px;
+}
+
+.btn-dashboard {
+  height: 50px;
+  width: 50px;
+
+  border-radius: 50%;
+  border: none;
+
+  color: #ffffff;
+}
+
+#btn-saldo {
+  background-color: #02aee2;
+}
+
+#btn-receitas {
+  background-color: #01a738;
+}
+
+#btn-despesas {
+  background-color: #9a0404;
+}
+
+#container-infos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dashboard-infos {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  gap: 40px;
+  height: 100px;
+  width: 350px;
+
+  border-radius: 50px;
+  background-color: #0575c5;
+}
+
+#infos {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 30px;
+  gap: 30px;
+}
+
+#graficoPrincipal {
+  width: 470px;
+  height: 255px;
+  margin-bottom: 30px;
+
+}
+
+#listGastosFixos {
+  width: 470px;
+  height: 285px;
+}
+
+#listGastosFixos ul {
+  list-style: none;
+  border: 1px black solid;
+}
+
+#container-list {
+  display: flex;
+  flex-direction: row;
+}
+
+#listGastos,
+#listEntrada {
+  width: 470px;
+  height: 629px;
+}
+
+#listEntrada,
+#listGastos,
+#listGastosFixos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+table {
+  width: 450px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+
+  padding: 5px;
+}
+
+tr:nth-child(2n) {
+  background-color: #d4e4f9;
+}
