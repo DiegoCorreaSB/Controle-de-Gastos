@@ -52,13 +52,13 @@ dialog[open] {
 
 input {
   height: 30px;
-  width: 300px;
+  width: 250px;
 
   border: 0;
   padding-left: 10px;
 
   color: white;
-  background-color: #041b3900;
+  background-color: #0055c500;
 }
 
 input::placeholder {
@@ -74,7 +74,7 @@ input:focus {
   border: 0;
 
   height: 30px;
-  width: 70px;
+  width: 90px;
 }
 
 .btn-tags:hover > #menu {
@@ -84,6 +84,8 @@ input:focus {
   align-items: center;
   justify-content: space-around;
   cursor: pointer;
+
+
 }
 
 #container-dialog {
@@ -118,4 +120,9 @@ input:focus {
 
 button {
     font-size: 1em;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

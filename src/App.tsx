@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown, faUpDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { ListGastoFixos } from "./components/listGastoFixo";
 import Navbar from "./components/nav";
 import "./index.css";
 import "./style/app.css"
@@ -17,8 +18,6 @@ function App() {
 
   const onHandleSpentChange = (value: number) => {
     setSpent(value);
-    // console.log("Valor vindo do Dialog:", value);
-    // console.log("tag veio", tag);
 
     switch (tag) {
       case "receita":
@@ -34,13 +33,7 @@ function App() {
       default:
         break;
     }
-
-
   };
-
-
-
-
 
   const onHandleTagChange = (value: string) => {
     setTag(value)
@@ -61,7 +54,7 @@ function App() {
               <div className="dashboard-infos">
                 <div>
                   <h3>Saldo Atual</h3>
-                  <p>R$ {saldoAtual}</p>
+                  <p>R$ {saldoAtual.toFixed(2)}</p>
                 </div>
                 <div>
                   <button className="btn-dashboard" id="btn-saldo">
@@ -73,7 +66,7 @@ function App() {
               <div className="dashboard-infos">
                 <div>
                   <h3>Entradas</h3>
-                  <p>R$ {saldoEntrada}</p>
+                  <p>R$ {saldoEntrada.toFixed(2)}</p>
                 </div>
                 <div>
                   <button className="btn-dashboard" id="btn-receitas">
@@ -85,7 +78,7 @@ function App() {
               <div className="dashboard-infos">
                 <div>
                   <h3>Despesas</h3>
-                  <p>R$ {saldoDespesa}</p>
+                  <p>R$ {saldoDespesa.toFixed(2)}</p>
                 </div>
                 <div>
                   <button className="btn-dashboard" id="btn-despesas">
@@ -104,26 +97,9 @@ function App() {
 
               <div>
                 <div className="containers-main" id="listGastosFixos">
-                  <p>Lista de Gastos Fixos:</p>
+                  
+                    <ListGastoFixos />
 
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>Água</td>
-                        <td>Luz</td>
-                        <td>Carro</td>
-                        <td>Internet</td>
-                        <td>Aluguel</td>
-                      </tr>
-                      <tr>
-                        <td>R$ 125,36</td>
-                        <td>R$ 90,84</td>
-                        <td>R$ 990,42</td>
-                        <td>R$ 129,90</td>
-                        <td>R$ 1.500,00</td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
               </div>
             </div>

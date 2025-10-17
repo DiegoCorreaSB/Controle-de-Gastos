@@ -58,11 +58,12 @@ export function DialogBox({ children, triggerText = "+", onSpentChange, onHandle
                     <div id="dialog-input">
                         <input
                             type="number"
+                            value={spent} 
                             placeholder="Digite o valor..."
                             onChange={handleChange}
                         />
                         <button type="button" className="btn-tags">
-                            Tags
+                            {tag}
                             <span >
                                 <FontAwesomeIcon icon={faCaretDown} />
                             </span>
@@ -79,9 +80,12 @@ export function DialogBox({ children, triggerText = "+", onSpentChange, onHandle
                         <button
                             onClick={() => {
                                 handleSave()
+                                setTag("")
+                                setSpent(0)
                             }}
                             id="button-save"
-                            className="button-options">
+                            className="button-options"
+                            >
                             Salvar
                         </button>
                         <button
