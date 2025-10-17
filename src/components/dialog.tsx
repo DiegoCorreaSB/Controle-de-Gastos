@@ -10,63 +10,40 @@ import "../style/dialog.css";
 interface DialogBoxProps {
     children?: ReactNode;
     triggerText?: string;
-    onSpentChange: (value: string) => void;
+    onSpentChange: (value: number) => void;
     onHandleTagChange: (value: string) => void;
-    onSaldoReceitaChange: (value: number) => void;
-    onSaldoDespesaChange: (value: number) => void;
 }
 
-export function DialogBox({ children, triggerText = "+", onSpentChange, onHandleTagChange, onSaldoReceitaChange, onSaldoDespesaChange }: DialogBoxProps) {
+export function DialogBox({ children, triggerText = "+", onSpentChange, onHandleTagChange }: DialogBoxProps) {
 
-    const dialogRef = useRef <HTMLDialogElement> (null);
+    const dialogRef = useRef<HTMLDialogElement>(null);
     const openDialog = () => dialogRef.current?.showModal();
     const closeDialog = () => dialogRef.current?.close();
 
-    const [spent, setSpent] = useState("");
+    const [spent, setSpent] = useState(Number);
     const [tag, setTag] = useState("");
-    // const [saldoAtual, setSaldoAtual] = useState(0)
-    const [saldoEntrada, setEntrada] = useState(0);
-    const [saldoDespesa, setDespesa] = useState(0);
-    let value = ""
-    let spentNumber = 0
 
-    const handleBalance = (value: number) => {
-        spentNumber = value
 
-        switch (tag) {
-            case "receita":
-                setEntrada(saldoEntrada + spentNumber)
-                value = spentNumber
-                onSaldoReceitaChange(value)
-                break;
-
-            case "despesa":
-                setDespesa(saldoDespesa + spentNumber)
-                value = spentNumber
-                onSaldoDespesaChange(spentNumber)
-                break;
-
-            default:
-                break;
-        }
-    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        value = e.target.value;
+        setSpent(+e.target.value);
     };
 
     const handleTag = (value: string) => {
         setTag(value)
         onHandleTagChange(value)
-
     }
 
     const handleSave = () => {
-        setSpent(value);
-        onSpentChange(value);
+        onSpentChange(spent);
+        if (!tag) {
+            alert("Seleciona uma TGAS")
+        } else {
+            onHandleTagChange(tag)
+            closeDialog()
+        }
 
-        handleBalance
-        closeDialog()
+
     }
 
     return (
@@ -80,7 +57,7 @@ export function DialogBox({ children, triggerText = "+", onSpentChange, onHandle
 
                     <div id="dialog-input">
                         <input
-                            type="text"
+                            type="number"
                             placeholder="Digite o valor..."
                             onChange={handleChange}
                         />

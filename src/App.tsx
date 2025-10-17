@@ -8,40 +8,51 @@ import "./style/dialog.css"
 
 function App() {
 
-  const [spent, setSpent] = useState("");
+  const [spent, setSpent] = useState(0);
   const [tag, setTag] = useState("");
-    const [saldoEntrada, setEntrada] = useState(0);
-    const [saldoDespesa, setDespesa] = useState(0);
+  const [saldoAtual, setSaldoAtual] = useState(0);
+  const [saldoEntrada, setSaldoEntrada] = useState(0);
+  const [saldoDespesa, setSaldoDespesa] = useState(0);
 
 
-  const onHandleSpentChange = (value: string) => {
+  const onHandleSpentChange = (value: number) => {
     setSpent(value);
-    console.log("Valor vindo do Dialog:", value);
+    // console.log("Valor vindo do Dialog:", value);
+    // console.log("tag veio", tag);
+
+    switch (tag) {
+      case "receita":
+        setSaldoEntrada(saldoEntrada + value)
+        setSaldoAtual(saldoAtual + value)
+        break;
+
+      case "despesa":
+        setSaldoDespesa(saldoDespesa - value)
+        setSaldoAtual(saldoAtual - value)
+        break;
+
+      default:
+        break;
+    }
+
+
   };
-  
+
+
+
+
+
   const onHandleTagChange = (value: string) => {
     setTag(value)
-    console.log("Tag vindo do Dialog:", value);
-    
-  }
-  
-    const onHandleSaldoReceitaChange = (value: number) => {
+    console.log("Tag vindo do Dialog: ", value);
 
-    
-  }
-  
-  const onHandleSaldoDespesaChange = (value: number) => {
-
-    
   }
 
-      
-      
-        return (
-          <>
+  return (
+    <>
       <div id="main">
 
-        <Navbar onSpentChange={onHandleSpentChange} onHandleTagChange={onHandleTagChange} onHandleSaldoDespesaChange={onHandleSaldoDespesaChange} onHandleSaldoReceitaChange = {onHandleSaldoReceitaChange}/>
+        <Navbar onSpentChange={onHandleSpentChange} onHandleTagChange={onHandleTagChange} />
 
         <main>
           <div className="containers-main" id="dashboard">
@@ -50,7 +61,7 @@ function App() {
               <div className="dashboard-infos">
                 <div>
                   <h3>Saldo Atual</h3>
-                  <p>{"saldoAtual"}</p>
+                  <p>R$ {saldoAtual}</p>
                 </div>
                 <div>
                   <button className="btn-dashboard" id="btn-saldo">
@@ -62,7 +73,7 @@ function App() {
               <div className="dashboard-infos">
                 <div>
                   <h3>Entradas</h3>
-                  <p>{"entrada"}</p>
+                  <p>R$ {saldoEntrada}</p>
                 </div>
                 <div>
                   <button className="btn-dashboard" id="btn-receitas">
@@ -74,7 +85,7 @@ function App() {
               <div className="dashboard-infos">
                 <div>
                   <h3>Despesas</h3>
-                  <p>{"despesa"}</p>
+                  <p>R$ {saldoDespesa}</p>
                 </div>
                 <div>
                   <button className="btn-dashboard" id="btn-despesas">

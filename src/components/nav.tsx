@@ -3,13 +3,12 @@ import { faUser, faHouse, faList } from "@fortawesome/free-solid-svg-icons";
 import { DialogBox } from "./dialog";
 
 interface NavProps {
-  onSpentChange: (value: string) => void;
+  onSpentChange: (value: number) => void;
   onHandleTagChange: (value: string) => void;
-  onHandleSaldoReceitaChange: (value: number) => void;
-  onHandleSaldoDespesaChange: (value: number) => void;
+
 }
 
-function Navbar({ onSpentChange, onHandleTagChange, onHandleSaldoDespesaChange, onHandleSaldoReceitaChange}: NavProps) {
+function Navbar({ onSpentChange, onHandleTagChange}: NavProps) {
 
   return (
     <nav>
@@ -19,7 +18,7 @@ function Navbar({ onSpentChange, onHandleTagChange, onHandleSaldoDespesaChange, 
         </button>
       </div>
 
-      <DialogBox triggerText="+" onSpentChange={onSpentChange} onHandleTagChange={onHandleTagChange} onSaldoDespesaChange={onHandleSaldoDespesaChange} onSaldoReceitaChange={onHandleSaldoReceitaChange}/>
+      <DialogBox triggerText="+" onSpentChange={onSpentChange} onHandleTagChange={onHandleTagChange} />
 
       <button style={{ fontSize: "1.5em" }}>
         <FontAwesomeIcon className="iconNav" icon={faHouse} />
