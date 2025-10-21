@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown, faUpDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { ListGastoFixos } from "./components/listGastoFixo";
+import { GraficGastos } from "./components/GraficGastos";
+import { GraficGeral } from "./components/graficGeral";
 import Navbar from "./components/nav";
 import "./index.css";
 import "./style/app.css"
@@ -9,7 +10,6 @@ import "./style/dialog.css"
 
 function App() {
 
-  const [spent, setSpent] = useState(0);
   const [tag, setTag] = useState("");
   const [saldoAtual, setSaldoAtual] = useState(0);
   const [saldoEntrada, setSaldoEntrada] = useState(0);
@@ -17,7 +17,6 @@ function App() {
 
 
   const onHandleSpentChange = (value: number) => {
-    setSpent(value);
 
     switch (tag) {
       case "receita":
@@ -34,6 +33,10 @@ function App() {
         break;
     }
   };
+
+  if (saldoAtual < 0) {
+    setSaldoAtual(0)
+  }
 
   const onHandleTagChange = (value: string) => {
     setTag(value)
@@ -92,13 +95,19 @@ function App() {
           <div id="infos">
             <div id="container-grafic">
               <div className="containers-main" id="graficoPrincipal">
-                <h1>GRÁFICO</h1>
+
+                <GraficGeral
+                  onSaldoEntrada={saldoEntrada}
+                  onSaldoDespesa={saldoDespesa}
+                />
+
+
               </div>
 
               <div>
                 <div className="containers-main" id="listGastosFixos">
-                  
-                    <ListGastoFixos />
+
+                  <GraficGastos />
 
                 </div>
               </div>

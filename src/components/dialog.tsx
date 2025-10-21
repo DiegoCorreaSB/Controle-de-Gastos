@@ -45,7 +45,7 @@ export function DialogBox({ children, triggerText = "+", onSpentChange, onHandle
 
 
     }
-
+    
     return (
         <>
             <button style={{ fontSize: "1.5em" }} onClick={openDialog}>{triggerText}</button>
@@ -79,6 +79,7 @@ export function DialogBox({ children, triggerText = "+", onSpentChange, onHandle
                     <div id="dialog-buttons">
                         <button
                             onClick={() => {
+                                closeDialog()
                                 handleSave()
                                 setTag("")
                                 setSpent(0)
@@ -87,7 +88,7 @@ export function DialogBox({ children, triggerText = "+", onSpentChange, onHandle
                             className="button-options"
                             >
                             Salvar
-                        </button>
+                        </button>   
                         <button
                             onClick={closeDialog}
                             id="button-close"
